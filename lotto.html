@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>로또번호 무료 생성기</title>
+  <meta charset="UTF-8">
+  <meta name="description" content="무료 로또번호 생성할 수 있는 사이트입니다.">
+  <meta name="keywords" content="무료 로또번호,로또번호 생성, 추천 로또번호, 로또번호 생성기, 무료 로또번호 추천">
+  <meta name="author" content="크라우드">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #3c3e70;
+      margin: 0;
+      padding: 20px;
+      text-align: center;
+	zoom: 80%;
+	lign-height: 0.7;
+    }
+    
+    h1 {
+      color: white;
+      font-weight: bold;
+    }
+
+    
+    
+    .lotto-box {
+      display: inline-block;
+      border: 10px solid gold;
+      border-radius: 10px;
+      padding: 20px;
+      margin: 100px;
+    }
+    
+    .lotto-set {
+      margin-bottom: 20px;
+    }
+    
+    .round-header {
+      font-weight: bold;
+      font-size: 20px;
+      margin-bottom: 10px;
+      text-align: left;
+    }
+    
+    .lotto-numbers {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+      margin-top: 10px;
+    }
+    
+    .lotto-number {
+      width: 80px;
+      height: 80px;
+      font-size: 30px;
+	font-weight: bold;
+      line-height: 80px;
+      margin: 5px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+      box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    }
+    
+    .lotto-number.range-1 {
+      background-color: #ffd700; /* Yellow */
+      color: #000000; /* Black number color for yellow ball */
+    }
+    
+    .lotto-number.range-2 {
+      background-color: #4169e1; /* Blue */
+      color: #ffffff; /* White number color for blue ball */
+    }
+    
+    .lotto-number.range-3 {
+      background-color: #ff0000; /* Red */
+      color: #ffffff; /* White number color for red ball */
+    }
+    
+    .lotto-number.range-4 {
+      background-color: #808080; /* Gray */
+      color: #ffffff; /* White number color for gray ball */
+    }
+    
+    .lotto-number.range-5 {
+      background-color: #008000; /* Green */
+      color: #ffffff; /* White number color for green ball */
+    }
+    
+    .button {
+      font-size: 25px;
+	padding: 15px 30px;
+	border: 3px solid gold;
+	background-color: transparent;
+	color: gold;
+	text-transform: uppercase;
+	letter-spacing: 5px;
+	font-weight: bold;
+	position: relative;
+	transition: all 1.0s;
+	overflow: hidden;
+    }
+
+    .button:focus {
+	outline: none;
+    }
+
+    .button::before {
+	content: "";
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	background-color: gold;
+	top: 100%;
+	left: 0;
+	transition: all 1.0s;
+	z-index: -1;
+    }
+
+    .button:hover::before {
+	transform: translateY(-100%);
+    }
+    
+    .button:hover {
+      color: #3c3e70;
+    }
+  </style>
+</head>
+<body>
+  <div class="lotto-box">
+    <h1 style="font-weight: bold; font-size: 40px;">크라우드의<br> 로또번호 무료 생성기</h1>
+  
+    <label for="quantity" style= "color: white; font-weight: bold; font-size: 30px; padding: 5px;">원하는 생성 개수:</label>
+    <select id="quantity" name="quantity" style="font-size: 30px; padding: 5px;">
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+    </select>
+    
+    <div id="lottoNumbers"></div>
+    <br>
+    <button class="button" onclick="generateNumbers()" style = "font-size: 30px; padding: 5px; font-weight: bold">로또번호 생성</button>
+  </div>
+  
+  <script>
+    function generateNumbers() {
+      var quantity = document.getElementById("quantity").value; // Get the selected quantity
+      
+      var numbersContainer = document.getElementById("lottoNumbers");
+      numbersContainer.innerHTML = '';
+      
+      for (var j = 0; j < quantity; j++) {
+        var numberSet = document.createElement("div");
+        numberSet.classList.add("lotto-set");
+        
+        var roundNumber = j + 1;
+        var roundHeader = document.createElement("div");
+        roundHeader.classList.add("round-header");
+        roundHeader.textContent = "번호세트 " + roundNumber;
+        numberSet.appendChild(roundHeader);
+        
+        var lottoNumbers = [];
+        while (lottoNumbers.length < 6) {
+          var randomNumber = Math.floor(Math.random() * 45) + 1; // Generate a random number between 1 and 45
+          if (!lottoNumbers.includes(randomNumber)) {
+            lottoNumbers.push(randomNumber);
+          }
+        }
+        
+        lottoNumbers.sort(function(a, b) {
+          return a - b;
+        });
+        
+        var numberLine = document.createElement("div");
+        numberLine.classList.add("lotto-numbers");
+        
+        for (var k = 0; k < lottoNumbers.length; k++) {
+          var numberItem = document.createElement("div");
+          numberItem.className = "lotto-number";
+          numberItem.textContent = lottoNumbers[k];
+          
+          if (lottoNumbers[k] >= 1 && lottoNumbers[k] <= 10) {
+            numberItem.classList.add("range-1");
+          } else if (lottoNumbers[k] >= 11 && lottoNumbers[k] <= 20) {
+            numberItem.classList.add("range-2");
+          } else if (lottoNumbers[k] >= 21 && lottoNumbers[k] <= 30) {
+            numberItem.classList.add("range-3");
+          } else if (lottoNumbers[k] >= 31 && lottoNumbers[k] <= 40) {
+            numberItem.classList.add("range-4");
+          } else if (lottoNumbers[k] >= 41 && lottoNumbers[k] <= 45) {
+            numberItem.classList.add("range-5");
+          }
+          
+          numberLine.appendChild(numberItem);
+        }
+        
+        numberSet.appendChild(numberLine);
+        numbersContainer.appendChild(numberSet);
+      }
+    }
+  </script>
+</body>
+</html>
