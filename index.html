@@ -14,7 +14,7 @@
       margin: 0;
       padding: 20px;
       text-align: center;
-	zoom: 80%;
+	zoom: 67%;
 	lign-height: 0.7;
     }
     
@@ -22,19 +22,21 @@
       color: white;
       font-weight: bold;
     }
+    
 
-    
-    
+
     .lotto-box {
+	width: 600px;
       display: inline-block;
       border: 10px solid gold;
       border-radius: 10px;
       padding: 20px;
-      margin: 100px;
+      margin: 0px;
     }
     
     .lotto-set {
       margin-bottom: 20px;
+	
     }
     
     .round-header {
@@ -49,6 +51,7 @@
       flex-wrap: wrap;
       justify-content: flex-start;
       margin-top: 10px;
+	
     }
     
     .lotto-number {
@@ -64,31 +67,42 @@
       align-items: center;
       text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
       box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+	
     }
     
     .lotto-number.range-1 {
       background-color: #ffd700; /* Yellow */
       color: #000000; /* Black number color for yellow ball */
+      margin-right: 10px;
+	margin-left: 10px;
     }
     
     .lotto-number.range-2 {
       background-color: #4169e1; /* Blue */
       color: #ffffff; /* White number color for blue ball */
+      margin-right: 10px;
+	margin-left: 10px;
     }
     
     .lotto-number.range-3 {
       background-color: #ff0000; /* Red */
       color: #ffffff; /* White number color for red ball */
+      margin-right: 10px;
+	margin-left: 10px;
     }
     
     .lotto-number.range-4 {
       background-color: #808080; /* Gray */
       color: #ffffff; /* White number color for gray ball */
+      margin-right: 10px;
+	margin-left: 10px;
     }
     
     .lotto-number.range-5 {
       background-color: #008000; /* Green */
       color: #ffffff; /* White number color for green ball */
+      margin-right: 10px;
+	margin-left: 10px;
     }
     
     .button {
@@ -135,13 +149,13 @@
   <div class="lotto-box">
     <h1 style="font-weight: bold; font-size: 40px;">크라우드의<br> 로또번호 무료 생성기</h1>
   
-    <label for="quantity" style= "color: white; font-weight: bold; font-size: 30px; padding: 5px;">원하는 생성 개수:</label>
+    <label for="quantity" style= "color: white; font-weight: bold; font-size: 30px; padding: 5px;">원하는 생성 개수: </label> 
     <select id="quantity" name="quantity" style="font-size: 30px; padding: 5px;">
-      <option value="1">1</option>
-      <option value="2">2</option>
-      <option value="3">3</option>
-      <option value="4">4</option>
-      <option value="5">5</option>
+      <option value="1">1개</option>
+      <option value="2">2개</option>
+      <option value="3">3개</option>
+      <option value="4">4개</option>
+      <option value="5">5개</option>
     </select>
     
     <div id="lottoNumbers"></div>
